@@ -43,17 +43,18 @@ st.set_page_config(page_title="Invoice Assistant")
 
 # Set up the header and input fields for the Streamlit app
 st.header("Invoice Assistant")
-uploaded_file = st.file_uploader("Upload an invoice:", type=["jpg", "jpeg", "png"])
+st.write("Upload an invoice image to extract key details such as total amount, date, and vendor information.")
+uploaded_file = st.file_uploader("Upload Invoice Image", type=["jpg", "jpeg", "png"])
 image = ""
 
 # Display the uploaded image if a file is uploaded
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image.", use_container_width=True)
-    input = st.text_input("Input Prompt: ", key="input")
+    input = st.text_input("Enter Your Query", key="input")
     
     # Create a button to trigger the invoice detail extraction
-    submit = st.button("Get Invoice Details")
+    submit = st.button("Extract Invoice Information", use_container_width=True)
     
     # Define the input prompt for the Gemini model
     input_prompt = """
@@ -71,5 +72,5 @@ if uploaded_file is not None:
         response = get_gemini_response(input_prompt, image_data, input)
         
         # Display the response in the Streamlit app
-        st.subheader("Response:")
+        st.subheader("Response")
         st.markdown(response)

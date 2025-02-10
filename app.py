@@ -72,5 +72,5 @@ if uploaded_file is not None:
         response = get_gemini_response(input_prompt, image_data, input)
         
         # Display the response in the Streamlit app
-        st.subheader("Response")
+        st.subheader("Response", divider = "red")
         st.markdown(response)

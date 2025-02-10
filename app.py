@@ -15,7 +15,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 ## Function to load OpenAI model and get respones
 
 def get_gemini_response(input,image,prompt):
-    model = genai.GenerativeModel('gemini-pro-vision')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     response = model.generate_content([input,image[0],prompt])
     return response.text
     
@@ -38,18 +38,18 @@ def input_image_setup(uploaded_file):
 
 ##initialize our streamlit app
 
-st.set_page_config(page_title="Gemini Image Demo")
+st.set_page_config(page_title="Invoice Assistant")
 
-st.header("Gemini Application")
+st.header("Invoice Assistant")
 input=st.text_input("Input Prompt: ",key="input")
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Upload an invoice:", type=["jpg", "jpeg", "png"])
 image=""   
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Image.", use_column_width=True)
 
 
-submit=st.button("Tell me about the image")
+submit=st.button("Invoice Detail")
 
 input_prompt = """
                You are an expert in understanding invoices.

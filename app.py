@@ -42,7 +42,7 @@ def input_image_setup(uploaded_file):
 st.set_page_config(page_title="Invoice Assistant")
 
 # Set up the header and input fields for the Streamlit app
-st.header("Invoice Assistant")
+st.header("Invoice Assistant", divider = "red")
 #st.write("Upload an invoice image to extract key details such as total amount, date, and vendor information.")
 uploaded_file = st.file_uploader("Upload Invoice Image", type=["jpg", "jpeg", "png"])
 image = ""

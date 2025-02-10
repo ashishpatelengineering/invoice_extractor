@@ -43,7 +43,7 @@ st.set_page_config(page_title="Invoice Assistant")
 
 # Set up the header and input fields for the Streamlit app
 st.header("Invoice Assistant")
-st.write("Upload an invoice image to extract key details such as total amount, date, and vendor information.")
+#st.write("Upload an invoice image to extract key details such as total amount, date, and vendor information.")
 uploaded_file = st.file_uploader("Upload Invoice Image", type=["jpg", "jpeg", "png"])
 image = ""
 

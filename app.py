@@ -52,24 +52,24 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image.", use_container_width=True)
     input = st.text_input("Input Prompt: ", key="input")
     
-# Create a button to trigger the invoice detail extraction
-submit = st.button("Get Invoice Details")
-
-# Define the input prompt for the Gemini model
-input_prompt = """
-               You are an expert in understanding invoices.
-               You will receive input images as invoices & you will have to answer questions based on the input image.
-               Your responses should be accurate based on the image uploaded.
-               """
-
-# If the "Get Invoice Details" button is clicked
-if submit:
-    # Process the uploaded image
-    image_data = input_image_setup(uploaded_file)
+    # Create a button to trigger the invoice detail extraction
+    submit = st.button("Get Invoice Details")
     
-    # Get the response from the Gemini model
-    response = get_gemini_response(input_prompt, image_data, input)
+    # Define the input prompt for the Gemini model
+    input_prompt = """
+                   You are an expert in understanding invoices.
+                   You will receive input images as invoices & you will have to answer questions based on the input image.
+                   Your responses should be accurate based on the image uploaded.
+                   """
     
-    # Display the response in the Streamlit app
-    st.subheader("Response:")
-    st.markdown(response)
+    # If the "Get Invoice Details" button is clicked
+    if submit:
+        # Process the uploaded image
+        image_data = input_image_setup(uploaded_file)
+        
+        # Get the response from the Gemini model
+        response = get_gemini_response(input_prompt, image_data, input)
+        
+        # Display the response in the Streamlit app
+        st.subheader("Response:")
+        st.markdown(response)
